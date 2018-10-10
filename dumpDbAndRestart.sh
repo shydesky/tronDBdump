@@ -1,17 +1,21 @@
 #!/bin/bash
 
 # default config
-node="FullNode" # or "SolidityNode"
-jar_path="/data/java-tron"
-conf_file="/data/java-tron/config.conf"
+node="FullNode"
+jar_path="."
+conf_file="./config.conf"
 tron_grep_filter="FullNode.jar"
 http_grep_filter="SimpleHTTPServer"
-database_dir_src="/data/java-tron/output-directory"
+database_dir_src="./output-directory"
 database_dir_dest="/tmp/database"
 http_host_port="0.0.0.0:18890"
 
 while [ -n "$1" ] ;do
     case "$1" in
+        --help)
+            echo "bash dumpDbAndRestart.sh --node {node} --jar_path {jar_path} --dbsrc {dbsrc} --dbdst {dbdst} --conf_file {conf_file} --http_host_port {http_host_port}"
+            exit 0
+            ;;
         --node)
             node=$2
             shift 2
